@@ -5,6 +5,8 @@ defmodule CarWatch.Mixfile do
     [app: :car_watch,
      version: "0.0.1",
      elixir: "~> 1.1",
+     name: "CarWatch",
+     source_url: "https://github.com/palmis/car_watch",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps]
