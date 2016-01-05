@@ -5,7 +5,6 @@ defmodule CarWatch.Watcher do
   # TODO: Add heredoc to moduledoc e.g. ##Example  
   
   use GenServer
-  use Timex
   
   #########
   ## API ##
@@ -49,6 +48,7 @@ defmodule CarWatch.Watcher do
   ######################
   
   def init(:ok) do
+    CarWatch.Delorian.start_link
     {:ok, %{}}
   end
   
@@ -78,7 +78,7 @@ defmodule CarWatch.Watcher do
   #######################
   
   defp observation(licence_plate) do
-    {licence_plate, Date.now}
+    {licence_plate, CarWatch.Delorian.now}
   end
   
 end
