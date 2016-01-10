@@ -8,8 +8,6 @@ defmodule CarWatch.Delorian do
   use GenServer
   use Timex
   
-  @name __MODULE__
-  
   #########
   ## API ##
   #########
@@ -89,8 +87,8 @@ defmodule CarWatch.Delorian do
   defp _travel(state, interval, unit) when is_atom(unit) do
     now = _now(state)
     destination = now |> _shift(interval, unit)
-    new_state = Date.diff(now, destination, :secs)
-    {:ok, new_state}
+    state_iteration = Date.diff(now, destination, :secs)
+    {:ok, state + state_iteration}
   end
   
   defp _shift(date, interval, :days) do

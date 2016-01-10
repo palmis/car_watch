@@ -14,14 +14,14 @@ defmodule CarWatch.Watcher do
   Start the worker with an empty state
   """
   def start_link(opts \\ []) do
-    GenServer.start_link(__MODULE__, :ok, opts)
+    GenServer.start_link(__MODULE__, :ok, opts ++ [name: __MODULE__])
   end
   
   @doc """
   Registers that a vehicle with `licence_plate` was observed at the given time.
   """
-  def observe(watcher, licence_plate) do
-    GenServer.cast(watcher, {:observe, licence_plate})
+  def observe(licence_plate) do
+    GenServer.cast(__MODULE__, {:observe, licence_plate})
   end
   
   @doc """
@@ -29,8 +29,8 @@ defmodule CarWatch.Watcher do
   
   Returns `{:ok, vehicles}` where `vehicles` is a ..NA.., `:error` othervise.
   """
-  def recollect(watcher) do
-    GenServer.call(watcher, :recollect)
+  def recollect do
+    GenServer.call(__MODULE__, :recollect)
   end
   
   @doc """
@@ -39,8 +39,8 @@ defmodule CarWatch.Watcher do
   Returns `{:ok, vehicle}` where `vehicle` is a ..NA.., 
   `:na` if vehicle has not been observed, `:error` othervise.
   """
-  def recollect(watcher, licence_plate) do
-    GenServer.call(watcher, {:recollect, licence_plate})
+  def recollect(licence_plate) do
+    GenServer.call(__MODULE__, {:recollect, licence_plate})
   end
   
   ######################
@@ -48,7 +48,6 @@ defmodule CarWatch.Watcher do
   ######################
   
   def init(:ok) do
-    CarWatch.Delorian.start_link
     {:ok, %{}}
   end
   

@@ -2,11 +2,6 @@ defmodule DelorianTest do
   use ExUnit.Case
   use Timex
   
-  setup do
-    {:ok, delorian} = CarWatch.Delorian.start_link([])
-    {:ok, delorian: delorian}
-  end
-  
   test "travel forward 7 days" do
     now = CarWatch.Delorian.now
     CarWatch.Delorian.travel(:days, 7)
