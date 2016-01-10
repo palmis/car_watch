@@ -30,21 +30,21 @@ defmodule CarWatch.Delorian do
   @doc """
   Time travel x days
   """
-  def travel(:days, days) do
+  def travel(days, :days) do
     GenServer.cast(__MODULE__, {:days, days})
   end
   
   @doc """
   Time travel x minutes
   """
-  def travel(:mins, mins) do
+  def travel(mins, :mins) do
     GenServer.cast(__MODULE__, {:mins, mins})
   end
   
   @doc """
   Time travel x seconds
   """
-  def travel(:secs, secs) do
+  def travel(secs, :secs) do
     GenServer.cast(__MODULE__, {:secs, secs})
   end
   

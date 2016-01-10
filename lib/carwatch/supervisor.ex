@@ -11,7 +11,7 @@ defmodule CarWatch.Supervisor do
       worker(CarWatch.Delorian, [])
     ]
     
-    opts = [strategy: :one_for_all]
+    opts = [strategy: :one_for_one]
 
     supervise(children, opts)
   end
