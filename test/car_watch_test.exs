@@ -17,4 +17,17 @@ defmodule CarWatchTest do
     {:ok, observations} = CarWatch.Watcher.recollect("onion")
     assert length(observations) == 2
   end
+  
+  test "base data structure is tuple" do
+    assert CarWatch.Watcher.observe("lamp") == :ok
+    assert CarWatch.Watcher.observe("lamp") == :ok
+    assert CarWatch.Watcher.observe("lamp") == :ok
+    
+    {:ok, observations} = CarWatch.Watcher.recollect("lamp")
+    assert length(observations) == 3
+    
+    [head | tail] = observations
+    assert is_list(tail)
+    assert is_tuple(head)
+  end
 end

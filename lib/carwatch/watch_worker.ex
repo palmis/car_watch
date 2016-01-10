@@ -54,7 +54,7 @@ defmodule CarWatch.Watcher do
   def handle_cast( {:observe, licence_plate}, state ) do
     if Map.has_key?(state, licence_plate) do
       {:ok, observations} = Map.fetch(state, licence_plate)
-      new_observations = [observations] ++ [observation(licence_plate)]
+      new_observations = [observation(licence_plate) | observations]
       {:noreply, Map.put(state, licence_plate, new_observations)}
     else
       new_observations = [observation(licence_plate)]
@@ -77,6 +77,7 @@ defmodule CarWatch.Watcher do
   #######################
   
   defp observation(licence_plate) do
+    # Not single-line because will change
     {licence_plate, CarWatch.Delorian.now}
   end
   
