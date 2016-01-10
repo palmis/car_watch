@@ -1,6 +1,16 @@
 # CarWatch
 Detects car licencs plates from image feed and registers information about the car.
 
+## Simulations
+Run simulations in `iex` by compiling `sim.exs`.
+Example:
+```elixir
+iex> c "sim.exs"
+[Simulation]
+iex> Simulation.naive
+:ok
+```
+
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
