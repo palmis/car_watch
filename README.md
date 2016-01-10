@@ -3,6 +3,7 @@ Detects car licencs plates from image feed and registers information about the c
 
 ## Simulations
 Run simulations in `iex` by compiling `sim.exs`.
+
 Example:
 ```elixir
 iex> c "sim.exs"

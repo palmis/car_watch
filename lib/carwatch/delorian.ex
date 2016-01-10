@@ -91,16 +91,8 @@ defmodule CarWatch.Delorian do
     {:ok, state + state_iteration}
   end
   
-  defp _shift(date, interval, :days) do
-    Date.shift(date, days: interval)
-  end
-  
-  defp _shift(date, interval, :mins) do
-    Date.shift(date, mins: interval)
-  end
-  
-  defp _shift(date, interval, :secs) do
-    Date.shift(date, secs: interval)
-  end
+  defp _shift(date, interval, :days), do: Date.shift(date, days: interval)
+  defp _shift(date, interval, :mins), do: Date.shift(date, mins: interval)
+  defp _shift(date, interval, :secs), do: Date.shift(date, secs: interval)
   
 end
